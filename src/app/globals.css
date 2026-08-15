@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Typefaces (wired to next/font in src/lib/fonts.ts) ---- */
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-script: var(--font-gamja), ui-rounded, cursive;
+
+  /* ---- Palette (hexes lifted from the Figma frame) ---- */
+  --color-ink: #141414;
+  --color-muted: #595959;
+  --color-brand: #2563eb;
+  --color-card: #fefeff;
+  --color-hairline: #ced6e8;
+  --color-footer-muted: #8a8a8a;
+
+  /* Pill tints */
+  --color-tint-violet: #edebff;
+  --color-tint-violet-fg: #5043c5;
+  --color-tint-blue: #e9f0ff;
+  --color-tint-rose: #ffeaee;
+  --color-tint-rose-fg: #904e5b;
+
+  /* Project media-tile backgrounds */
+  --color-media-violet: #e7e5ff;
+  --color-media-mint: #e8f3f1;
+  --color-media-sky: #f2f9fe;
+  --color-media-rose: #ffeaee;
+
+  /* ---- Fluid type scale (design values are the max) ---- */
+  --text-mega: clamp(3.5rem, 13.7vw, 10.968rem); /* 175.488px */
+  --text-display: clamp(2.125rem, 4.45vw, 3.5625rem); /* 57px */
+  --text-title: clamp(1.75rem, 3.3vw, 2.625rem); /* 42px */
+  --text-h2: clamp(1.75rem, 2.8vw, 2.25rem); /* 36px */
+  --text-h3: clamp(1.375rem, 2.2vw, 1.75rem); /* 28px */
+
+  /* ---- Motion ---- */
+  --animate-marquee: marquee 45s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Fraunces ships SOFT + WONK axes. The design pins them to SOFT 0 / WONK 1,
+ * which is what gives the headline its quirky `g` and `y` forms.
+ */
+.wonk {
+  font-variation-settings: "SOFT" 0, "WONK" 1;
+}
+
+/* Big footer wordmark: gradient clipped to the glyphs. */
+.gradient-text {
+  background-image: linear-gradient(179.84deg, #2563eb 0.69%, #141414 82.95%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+}
