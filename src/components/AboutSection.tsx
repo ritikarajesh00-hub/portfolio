@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { about } from "@/data/site";
+import { asset } from "@/lib/asset";
 import { ArrowButton } from "./ui/ArrowButton";
 import { CurvedArrow, SparkleIcon } from "./ui/icons";
 
@@ -14,7 +15,7 @@ export function AboutSection() {
         <div className="relative h-[451px] w-[326px] shrink-0 justify-self-center lg:justify-self-start">
           <div className="absolute bottom-0 h-[351px] w-[326px] overflow-hidden rounded-[20px] bg-[#d9d9d9]">
             <Image
-              src="/assets/about-portrait.png"
+              src={asset("/assets/about-portrait.png")}
               alt={about.portraitAlt}
               width={743}
               height={1010}

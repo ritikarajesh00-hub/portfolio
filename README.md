@@ -23,6 +23,29 @@ npm run dev
 
 Then open http://localhost:3000.
 
+## Deploying to GitHub Pages
+
+Deployed from the `gh-pages` branch — no GitHub Actions involved.
+
+```bash
+npm run deploy
+```
+
+That builds a static export with `NEXT_PUBLIC_BASE_PATH=/portfolio`, copies
+`out/` onto the `gh-pages` branch via a temporary git worktree, and pushes.
+`DRY_RUN=1 npm run deploy` does everything except the push.
+
+One-time setup, after the first deploy creates the branch: **Settings → Pages →
+Source: Deploy from a branch → `gh-pages` → `/ (root)`**.
+
+Two things that are easy to get wrong:
+
+- `next/image` does **not** apply `basePath` when `images.unoptimized` is set,
+  so every `/public` reference goes through `asset()` in `src/lib/asset.ts`.
+  Adding a raw `<img src="/assets/…">` will 404 in production.
+- `public/.nojekyll` must exist, or GitHub's Jekyll layer drops `_next/` and the
+  page loads with no CSS or JS.
+
 ## Layout
 
 ```

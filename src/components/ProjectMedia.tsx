@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { asset } from "@/lib/asset";
 
 /*
  * Each tile is 448×308 in Figma with screenshots absolutely placed inside it
@@ -36,7 +37,7 @@ function DiaFreeMedia() {
       {/* Back handset — its bitmap is nudged left inside a clipping window. */}
       <div className="absolute top-[11.45%] left-[49.47%] h-[103.55%] w-[33.6%] overflow-hidden">
         <Image
-          src="/assets/dia-mock-back.png"
+          src={asset("/assets/dia-mock-back.png")}
           alt=""
           width={1958}
           height={3840}
@@ -46,7 +47,7 @@ function DiaFreeMedia() {
       </div>
       <div className="absolute top-[6.51%] left-[16.96%] h-[109.42%] w-[38.97%] overflow-hidden">
         <Image
-          src="/assets/dia-mock-front.png"
+          src={asset("/assets/dia-mock-front.png")}
           alt="Dia Free product detail page on mobile"
           width={1958}
           height={3840}
@@ -63,7 +64,7 @@ function SubscriptionsMedia() {
     <Tile tone="mint">
       <div className="absolute top-[9.74%] left-[-4.688%] h-[130.52%] w-[109.375%] shadow-[0px_4px_16.9px_0px_rgba(20,20,20,0.2)]">
         <Image
-          src="/assets/subscriptions.png"
+          src={asset("/assets/subscriptions.png")}
           alt="Smart Subscriptions screens"
           fill
           sizes="(max-width: 768px) 100vw, 490px"
@@ -81,7 +82,7 @@ function TrustSignalsMedia() {
           leaf re-centred on that box and rotated about its own centre. */}
       <div className="absolute top-[15.72%] left-[25.02%] h-[125.04%] w-[43.59%] -rotate-[13.45deg]">
         <Image
-          src="/assets/trust-back.png"
+          src={asset("/assets/trust-back.png")}
           alt=""
           fill
           sizes="200px"
@@ -90,7 +91,7 @@ function TrustSignalsMedia() {
       </div>
       <div className="absolute top-[12.99%] left-[40.67%] h-[115.91%] w-[43.53%]">
         <Image
-          src="/assets/trust-front.png"
+          src={asset("/assets/trust-front.png")}
           alt="Trust signals shown on a product page"
           fill
           sizes="200px"
@@ -106,7 +107,7 @@ function ReturnsMedia() {
     <Tile tone="rose">
       <div className="absolute top-[-61.69%] left-[52.68%] h-[124.35%] w-[42.63%] overflow-hidden">
         <Image
-          src="/assets/returns.png"
+          src={asset("/assets/returns.png")}
           alt=""
           width={636}
           height={1280}
@@ -116,7 +117,7 @@ function ReturnsMedia() {
       </div>
       <div className="absolute top-[20.45%] left-[7.59%] h-[124.35%] w-[42.41%] overflow-hidden">
         <Image
-          src="/assets/returns.png"
+          src={asset("/assets/returns.png")}
           alt="Returns flow on mobile"
           width={636}
           height={1280}

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { hero } from "@/data/site";
+import { asset } from "@/lib/asset";
 import { ArrowButton } from "./ui/ArrowButton";
 
 /**
@@ -11,7 +12,7 @@ export function GridBackdrop() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-x-0 top-[-28px] h-[730px]">
       <Image
-        src="/assets/grid-bg.png"
+        src={asset("/assets/grid-bg.png")}
         alt=""
         fill
         priority
@@ -66,7 +67,7 @@ export function Hero() {
             they stay pinned to the photo at every breakpoint. */}
         <div className="relative mx-auto h-[480px] w-[320px] lg:mx-0 lg:justify-self-center">
           <Image
-            src="/assets/hero-portrait.png"
+            src={asset("/assets/hero-portrait.png")}
             alt={hero.portraitAlt}
             fill
             priority

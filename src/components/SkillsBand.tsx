@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { skills } from "@/data/site";
+import { asset } from "@/lib/asset";
 
 /**
  * The skill row is ~1938px of chips inside a 1040px card, i.e. a marquee.
@@ -38,7 +39,7 @@ export function SkillsBand() {
         {/* Same blueprint grid as the hero, tinted blue instead of white. */}
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-60">
           <Image
-            src="/assets/grid-bg.png"
+            src={asset("/assets/grid-bg.png")}
             alt=""
             fill
             sizes="(max-width: 1280px) 100vw, 1040px"

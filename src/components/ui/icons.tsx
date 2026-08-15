@@ -7,16 +7,18 @@
 
 /* eslint-disable @next/next/no-img-element */
 
+import { asset } from "@/lib/asset";
+
 export function DownloadIcon() {
   return (
-    <img src="/assets/icon-download.svg" alt="" aria-hidden className="size-[24px] shrink-0" />
+    <img src={asset("/assets/icon-download.svg")} alt="" aria-hidden className="size-[24px] shrink-0" />
   );
 }
 
 /** 24×24 arrow used inside the two large blue buttons. */
 export function ArrowUpRightIcon() {
   return (
-    <img src="/assets/icon-arrow-up-right.svg" alt="" aria-hidden className="size-[24px] shrink-0" />
+    <img src={asset("/assets/icon-arrow-up-right.svg")} alt="" aria-hidden className="size-[24px] shrink-0" />
   );
 }
 
@@ -29,12 +31,12 @@ export function ArrowCircleIcon() {
   return (
     <span className="relative block size-[20px] shrink-0" aria-hidden>
       <img
-        src="/assets/icon-arrow-circle-outer.svg"
+        src={asset("/assets/icon-arrow-circle-outer.svg")}
         alt=""
         className="absolute inset-0 size-[20px]"
       />
       <img
-        src="/assets/icon-arrow-circle-inner.svg"
+        src={asset("/assets/icon-arrow-circle-inner.svg")}
         alt=""
         className="absolute left-[8.65px] top-[6.53px] h-[7px] w-[3.676px]"
       />
@@ -51,7 +53,7 @@ export function SparkleIcon({ className = "" }: { className?: string }) {
   return (
     <span aria-hidden className={`relative block size-[24px] overflow-hidden ${className}`}>
       <img
-        src="/assets/icon-sparkle.svg"
+        src={asset("/assets/icon-sparkle.svg")}
         alt=""
         className="absolute top-[0.01%] left-[3.61%] h-[23.614px] w-[21.858px]"
       />
@@ -71,7 +73,7 @@ export function CurvedArrow({ className = "" }: { className?: string }) {
       className={`relative size-[130px] rotate-180 overflow-hidden ${className}`}
     >
       <img
-        src="/assets/icon-curved-arrow.svg"
+        src={asset("/assets/icon-curved-arrow.svg")}
         alt=""
         className="absolute top-0 left-[30.49%] h-[129.595px] w-[52.44px]"
       />
@@ -83,7 +85,7 @@ export function CurvedArrow({ className = "" }: { className?: string }) {
 export function HighlightSquiggle({ className = "" }: { className?: string }) {
   return (
     <img
-      src="/assets/highlight-squiggle.svg"
+      src={asset("/assets/highlight-squiggle.svg")}
       alt=""
       aria-hidden
       className={`h-[76px] w-[128px] ${className}`}
@@ -94,6 +96,6 @@ export function HighlightSquiggle({ className = "" }: { className?: string }) {
 /** 57×57 avatar placeholder on the testimonial cards. */
 export function AvatarPlaceholder() {
   return (
-    <img src="/assets/avatar.svg" alt="" aria-hidden className="size-[57px] shrink-0" />
+    <img src={asset("/assets/avatar.svg")} alt="" aria-hidden className="size-[57px] shrink-0" />
   );
 }
