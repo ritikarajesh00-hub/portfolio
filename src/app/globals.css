@@ -5,6 +5,7 @@
   --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
   --font-script: var(--font-gamja), ui-rounded, cursive;
+  --font-wordmark: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 
   /* ---- Palette (hexes lifted from the Figma frame) ---- */
   --color-ink: #141414;
@@ -29,6 +30,8 @@
 
   /* ---- Fluid type scale (design values are the max) ---- */
   --text-mega: clamp(3.5rem, 13.7vw, 10.968rem); /* 175.488px */
+  /* Hero heading: 50px on desktop, scaled down so it cannot overflow on phones. */
+  --text-hero: clamp(2rem, 5vw, 3.125rem); /* 50px */
   --text-display: clamp(2.125rem, 4.45vw, 3.5625rem); /* 57px */
   --text-title: clamp(1.75rem, 3.3vw, 2.625rem); /* 42px */
   --text-h2: clamp(1.75rem, 2.8vw, 2.25rem); /* 36px */
@@ -58,6 +61,26 @@ body {
 }
 
 /*
+ * Single source of truth for the page's side margins. Every section uses this
+ * instead of repeating padding utilities, so the desktop gutter is one edit.
+ */
+.page-x {
+  padding-inline: 24px;
+}
+
+@media (min-width: 768px) {
+  .page-x {
+    padding-inline: 48px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .page-x {
+    padding-inline: 100px;
+  }
+}
+
+/*
  * Fraunces ships SOFT + WONK axes. The design pins them to SOFT 0 / WONK 1,
  * which is what gives the headline its quirky `g` and `y` forms.
  */
@@ -71,6 +94,15 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+/*
+ * Hide the native pointer only while CustomCursor is mounted. The descendant
+ * selector is needed because links and buttons set their own `cursor`.
+ */
+.custom-cursor-active,
+.custom-cursor-active * {
+  cursor: none !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

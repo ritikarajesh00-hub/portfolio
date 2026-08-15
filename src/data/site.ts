@@ -12,8 +12,26 @@ export const nav = {
   resume: { label: "Resume", href: "#resume" },
 };
 
+/**
+ * A headline renders inline. `accent` paints a segment brand blue; `wordmark`
+ * swaps in the logo treatment of the name, whose final letter becomes a
+ * comment-bubble mark.
+ */
+type HeadlineSegment = { text: string; accent?: boolean; wordmark?: boolean };
+
+const heroHeadline: HeadlineSegment[] = [
+  { text: "Hey, I am " },
+  { text: "Rithika", wordmark: true },
+  { text: "!\n" },
+  { text: "Designing with " },
+  { text: "pixels", accent: true },
+  { text: ". Building with " },
+  { text: "prompts", accent: true },
+  { text: "." },
+];
+
 export const hero = {
-  headline: { before: "Hey, I am Rithika!\nI ", accent: "design", after: " thoughtful products!" },
+  headline: heroHeadline,
   bio: {
     before:
       "I’ve done post graduation in Interaction Designing from Pearl Academy, Bangalore. I have ",

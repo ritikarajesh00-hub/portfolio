@@ -69,7 +69,7 @@ export function WorkSection() {
   return (
     <section
       id="work"
-      className="mx-auto w-full max-w-[1280px] px-6 py-[80px] md:px-12 xl:px-[120px]"
+      className="page-x mx-auto w-full max-w-[1280px] py-[80px]"
     >
       <div className="flex flex-col items-center gap-[64px]">
         <div className="flex flex-col items-center gap-[16px] text-center">

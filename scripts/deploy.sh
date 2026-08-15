@@ -32,6 +32,12 @@ rm -rf "$WORKTREE"
 if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
   git fetch --quiet origin "$BRANCH"
   git worktree add --quiet "$WORKTREE" -B "$BRANCH" "origin/$BRANCH"
+elif git show-ref --verify --quiet "refs/heads/$BRANCH"; then
+  # Exists locally but was never pushed (e.g. a previous DRY_RUN). Build on it
+  # rather than trying to re-create it — checkout --orphan rejects a name that
+  # is already taken.
+  echo "    reusing local $BRANCH (not yet on origin)"
+  git worktree add --quiet "$WORKTREE" "$BRANCH"
 else
   echo "    $BRANCH does not exist yet — creating it as an orphan branch"
   git worktree add --quiet --detach "$WORKTREE"

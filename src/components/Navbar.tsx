@@ -5,7 +5,7 @@ import { gamjaFlower } from "@/lib/fonts";
 
 export function Navbar() {
   return (
-    <header className="relative z-20 mx-auto flex w-full max-w-[1280px] items-center justify-between px-6 py-[20px] md:px-12 xl:px-[120px]">
+    <header className="page-x relative z-20 mx-auto flex w-full max-w-[1280px] items-center justify-between py-[20px]">
       <Link
         href="/"
         className={`${gamjaFlower.className} text-[40px] leading-none tracking-[-0.8px] text-brand`}

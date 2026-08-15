@@ -30,6 +30,30 @@ export function GridBackdrop() {
   );
 }
 
+/**
+ * Logo treatment of the name: heavy geometric letterforms, with the final "a"
+ * replaced by a comment bubble in brand blue — a circle with the bottom-left
+ * corner left square, which is what gives it the speech-bubble tail.
+ *
+ * The dropped letter is restored for screen readers so the name still reads
+ * whole.
+ */
+function NameMark({ name }: { name: string }) {
+  const stem = name.slice(0, -1);
+  const dropped = name.slice(-1);
+
+  return (
+    <span className="font-wordmark inline-flex items-end font-extrabold tracking-[-0.03em]">
+      {stem}
+      <span
+        aria-hidden
+        className="mb-[0.04em] ml-[0.05em] inline-block size-[0.66em] rounded-tl-full rounded-tr-full rounded-br-full bg-brand"
+      />
+      <span className="sr-only">{dropped}</span>
+    </span>
+  );
+}
+
 /** Rotated outline label floating over the hero portrait. */
 function Sticker({ label, className }: { label: string; className: string }) {
   return (
@@ -43,13 +67,19 @@ function Sticker({ label, className }: { label: string; className: string }) {
 
 export function Hero() {
   return (
-    <section className="relative mx-auto w-full max-w-[1280px] px-6 pt-[60px] pb-[80px] md:px-12 xl:px-[120px]">
+    <section className="page-x relative mx-auto w-full max-w-[1280px] pt-[60px] pb-[80px]">
       <div className="grid items-center gap-12 lg:grid-cols-[555px_1fr]">
         <div className="flex flex-col gap-[42px]">
-          <h1 className="font-display wonk text-display leading-[1.15] font-semibold whitespace-pre-line text-ink">
-            {hero.headline.before}
-            <span className="text-brand">{hero.headline.accent}</span>
-            {hero.headline.after}
+          <h1 className="font-display wonk text-hero leading-[1.15] font-semibold whitespace-pre-line text-ink">
+            {hero.headline.map((segment, i) =>
+              segment.wordmark ? (
+                <NameMark key={i} name={segment.text} />
+              ) : (
+                <span key={i} className={segment.accent ? "text-brand" : undefined}>
+                  {segment.text}
+                </span>
+              ),
+            )}
           </h1>
 
           <p className="font-display wonk text-xl text-muted">

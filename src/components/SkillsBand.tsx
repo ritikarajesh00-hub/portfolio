@@ -34,7 +34,7 @@ function SkillMarquee() {
 
 export function SkillsBand() {
   return (
-    <section className="mx-auto w-full max-w-[1280px] px-6 py-[40px] md:px-12 xl:px-[120px]">
+    <section className="page-x mx-auto w-full max-w-[1280px] py-[40px]">
       <div className="relative flex flex-col items-center gap-[32px] overflow-hidden rounded-[40px] bg-brand py-[60px]">
         {/* Same blueprint grid as the hero, tinted blue instead of white. */}
         <div aria-hidden className="pointer-events-none absolute inset-0 opacity-60">
@@ -54,6 +54,7 @@ export function SkillsBand() {
           />
         </div>
 
+        {/* Inner padding of the blue card — not the page gutter. */}
         <div className="relative flex max-w-[682px] flex-col items-center gap-[16px] px-6 text-center text-white">
           <h2 className="text-display font-medium">What I bring to the table</h2>
           <p className="max-w-[504px] text-xl opacity-80">

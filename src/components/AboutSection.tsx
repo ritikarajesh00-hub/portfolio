@@ -8,7 +8,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="mx-auto w-full max-w-[1280px] px-6 py-[80px] md:px-12 xl:px-[120px]"
+      className="page-x mx-auto w-full max-w-[1280px] py-[80px]"
     >
       <div className="mx-auto grid max-w-[952px] gap-[32px] lg:grid-cols-[326px_1fr] lg:gap-[32px]">
         {/* Title stack sitting on top of the portrait card. */}

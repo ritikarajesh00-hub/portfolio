@@ -3,7 +3,7 @@ import { AvatarPlaceholder } from "./ui/icons";
 
 export function Testimonials() {
   return (
-    <section className="mx-auto w-full max-w-[1280px] px-6 py-[80px] md:px-12 xl:px-[120px]">
+    <section className="page-x mx-auto w-full max-w-[1280px] py-[80px]">
       <div className="grid gap-[48px] lg:grid-cols-2 lg:gap-[32px]">
         <div className="flex max-w-[504px] flex-col gap-[16px] lg:sticky lg:top-[60px] lg:self-start">
           <h2 className="text-display font-medium text-ink">{testimonials.heading}</h2>

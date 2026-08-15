@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { bricolage, fraunces, gamjaFlower } from "@/lib/fonts";
+import { bricolage, fraunces, gamjaFlower, poppins } from "@/lib/fonts";
+import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +15,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${fraunces.variable} ${gamjaFlower.variable}`}
+      className={`${bricolage.variable} ${fraunces.variable} ${gamjaFlower.variable} ${poppins.variable}`}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        {children}
+        <CustomCursor />
+      </body>
     </html>
   );
 }

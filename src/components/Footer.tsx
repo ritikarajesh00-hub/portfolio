@@ -4,7 +4,7 @@ import { footer } from "@/data/site";
 export function Footer() {
   return (
     <footer id="resume" className="overflow-hidden bg-ink">
-      <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-[105px] px-6 pt-[60px] md:px-12 xl:px-[118px]">
+      <div className="page-x mx-auto flex w-full max-w-[1280px] flex-col gap-[105px] pt-[60px]">
         <div className="flex flex-col gap-[52px]">
           <h2 className="flex max-w-[687px] flex-col gap-[6px] text-display font-semibold text-white">
             <span>{footer.headline.line1}</span>
