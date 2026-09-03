@@ -30,26 +30,40 @@ export function GridBackdrop() {
   );
 }
 
+/** One corner handle of the selection box: white dot, blue ring. */
+function SelectionHandle({ className }: { className: string }) {
+  return (
+    <span
+      className={`absolute size-[9px] rounded-full border-[1.5px] border-selection bg-white ${className}`}
+    />
+  );
+}
+
 /**
- * Logo treatment of the name: heavy geometric letterforms, with the final "a"
- * replaced by a comment bubble in brand blue — a circle with the bottom-left
- * corner left square, which is what gives it the speech-bubble tail.
- *
- * The dropped letter is restored for screen readers so the name still reads
- * whole.
+ * The name set as a wordmark, wrapped in Figma-style selection chrome.
  */
 function NameMark({ name }: { name: string }) {
-  const stem = name.slice(0, -1);
-  const dropped = name.slice(-1);
-
   return (
-    <span className="font-wordmark inline-flex items-end font-extrabold tracking-[-0.03em]">
-      {stem}
+    // leading-[1] shrinks the inline box to the glyphs so the selection border
+    // hugs the name; mr keeps the corner handles clear of the next character.
+    <span className="relative mr-[9px] inline-block leading-[1] font-extrabold tracking-[-0.045em]">
+      {name}
+
+      {/*
+        Figma-style selection chrome: bounding box plus four corner handles.
+        Insets are in em so the box keeps hugging the glyphs as the heading
+        scales — top just above cap height, bottom on the baseline — with a
+        flat 2px of breathing room added on every side.
+      */}
       <span
         aria-hidden
-        className="mb-[0.04em] ml-[0.05em] inline-block size-[0.66em] rounded-tl-full rounded-tr-full rounded-br-full bg-brand"
-      />
-      <span className="sr-only">{dropped}</span>
+        className="pointer-events-none absolute top-[calc(0.065em-2px)] right-[-2px] bottom-[calc(0.15em-2px)] left-[-2px] border border-selection"
+      >
+        <SelectionHandle className="-top-[5px] -left-[5px]" />
+        <SelectionHandle className="-top-[5px] -right-[5px]" />
+        <SelectionHandle className="-bottom-[5px] -left-[5px]" />
+        <SelectionHandle className="-bottom-[5px] -right-[5px]" />
+      </span>
     </span>
   );
 }
@@ -70,7 +84,7 @@ export function Hero() {
     <section className="page-x relative mx-auto w-full max-w-[1280px] pt-[60px] pb-[80px]">
       <div className="grid items-center gap-12 lg:grid-cols-[555px_1fr]">
         <div className="flex flex-col gap-[42px]">
-          <h1 className="font-display wonk text-hero leading-[1.15] font-semibold whitespace-pre-line text-ink">
+          <h1 className="text-hero leading-[1.15] font-semibold whitespace-pre-line text-ink">
             {hero.headline.map((segment, i) =>
               segment.wordmark ? (
                 <NameMark key={i} name={segment.text} />
@@ -82,26 +96,28 @@ export function Hero() {
             )}
           </h1>
 
-          <p className="font-display wonk text-xl text-muted">
+          <p className="text-xl text-muted">
             {hero.bio.before}
             <span className="font-semibold text-ink">{hero.bio.strong}</span>
             {hero.bio.after}
           </p>
 
           <div>
-            <ArrowButton href={hero.cta.href}>{hero.cta.label}</ArrowButton>
+            <ArrowButton href={hero.cta.href} icon={hero.cta.icon}>
+              {hero.cta.label}
+            </ArrowButton>
           </div>
         </div>
 
         {/* Stickers are anchored to the portrait box rather than the page, so
             they stay pinned to the photo at every breakpoint. */}
-        <div className="relative mx-auto h-[480px] w-[320px] lg:mx-0 lg:justify-self-center">
+        <div className="relative mx-auto aspect-[2/3] w-[300px] sm:w-[380px] lg:mx-0 lg:justify-self-center">
           <Image
             src={asset("/assets/hero-portrait.png")}
             alt={hero.portraitAlt}
             fill
             priority
-            sizes="320px"
+            sizes="(max-width: 640px) 300px, 380px"
             className="object-cover"
           />
           {hero.stickers.map((sticker) => (

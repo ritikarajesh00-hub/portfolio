@@ -23,6 +23,36 @@ export function ArrowUpRightIcon() {
 }
 
 /**
+ * The same exported arrow turned to point right, for inline text links.
+ * 45° because the glyph starts pointing up-right.
+ */
+export function ArrowRightIcon() {
+  return (
+    <img
+      src={asset("/assets/icon-arrow-up-right.svg")}
+      alt=""
+      aria-hidden
+      className="size-[20px] shrink-0 rotate-45"
+    />
+  );
+}
+
+/**
+ * The same exported arrow turned to point straight down, for the CTA that
+ * sends you further down the page. 135° because the glyph starts at 45°.
+ */
+export function ArrowDownIcon() {
+  return (
+    <img
+      src={asset("/assets/icon-arrow-up-right.svg")}
+      alt=""
+      aria-hidden
+      className="size-[24px] shrink-0 rotate-[135deg]"
+    />
+  );
+}
+
+/**
  * 20×20 circled arrow on the "Case Study" button. Figma composes it from two
  * layers — a 20×20 ring plus a 3.676×7 arrowhead offset by (8.65, 6.53) —
  * so both leaves keep their own explicit dimensions.

@@ -34,41 +34,48 @@ export const hero = {
   headline: heroHeadline,
   bio: {
     before:
-      "I’ve done post graduation in Interaction Designing from Pearl Academy, Bangalore. I have ",
-    strong: "3 years of experience",
-    after: " in UI/UX designing and a strong interest in storytelling.",
+      "Product designer by profession, interaction designer by training, illustrator at heart. ",
+    strong: "3+ years at Kapiva",
+    after: ", exploring how AI and code can push design beyond the canvas.",
   },
-  cta: { label: "Best Work", href: "#work" },
+  cta: { label: "See the work", href: "#work", icon: "down" as const },
   portraitAlt: "Portrait of Rithika",
-  /** Rotated sticker labels floating over the portrait. */
+  /**
+   * Rotated sticker labels floating over the portrait. Offsets are percentages
+   * of the portrait box, so they stay pinned to the same spots on the photo
+   * whatever size it is rendered at.
+   */
   stickers: [
-    { label: "Traveller", className: "top-[40px] -right-[10px] -rotate-[7.92deg]" },
-    { label: "3+ years experience", className: "top-[165px] left-[-40px] rotate-[9.27deg]" },
-    { label: "Fashion Designer", className: "top-[305px] right-[-24px] rotate-[7deg]" },
+    { label: "Traveller", className: "top-[8.3%] right-[-3%] -rotate-[7.92deg]" },
+    { label: "3+ years experience", className: "top-[34.4%] left-[-12.5%] rotate-[9.27deg]" },
+    { label: "Fashion Designer", className: "top-[63.5%] right-[-7.5%] rotate-[7deg]" },
   ],
 };
 
 export type Project = {
   id: string;
-  layout: "wide" | "tall";
-  tags: { label: string; tone: "violet" | "blue" | "rose" }[];
+  layout: "feature" | "wide" | "tall";
+  tags: { label: string; tone: "violet" | "blue" | "rose" | "solid" | "outline" }[];
   title: string;
   description: string;
+  /** Substring of `description` to italicise, echoing the pull-quote emphasis. */
+  emphasize?: string;
   cta?: { label: string; href: string };
   media: { tone: "violet" | "mint" | "sky" | "rose" };
 };
 
 export const projects: Project[] = [
   {
-    id: "dia-free-pdp",
-    layout: "wide",
+    id: "pcos-funnel",
+    layout: "feature",
     tags: [
-      { label: "Website", tone: "violet" },
-      { label: "D2C E-commerce", tone: "violet" },
+      { label: "Kapiva", tone: "solid" },
+      { label: "Healthcare GTM", tone: "outline" },
     ],
-    title: "Dia Free PDP Revamp",
+    title: "Designing a doctor-led landing page for a PCOS health program",
     description:
-      "Redesigned the Dia Free PDP using research and behavioral insights, increasing RPS by 20% and conversion by 21.69%.",
+      "A diagnosis-first landing page built from the ground up — consumer research, UX narrative, information architecture, and UI design, aligned across product, medical, and marketing stakeholders.",
+    cta: { label: "Read the full case study", href: "/work/pcos-program" },
     media: { tone: "violet" },
   },
   {

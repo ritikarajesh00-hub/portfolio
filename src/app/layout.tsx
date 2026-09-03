@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bricolage, fraunces, gamjaFlower, poppins } from "@/lib/fonts";
+import { bricolage } from "@/lib/fonts";
 import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
@@ -13,10 +13,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${bricolage.variable} ${fraunces.variable} ${gamjaFlower.variable} ${poppins.variable}`}
-    >
+    <html lang="en" className={bricolage.variable}>
       <body className="font-sans antialiased">
         {children}
         <CustomCursor />

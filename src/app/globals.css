@@ -2,10 +2,11 @@
 
 @theme {
   /* ---- Typefaces (wired to next/font in src/lib/fonts.ts) ---- */
+  /* One family for the entire page. */
   --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
-  --font-script: var(--font-gamja), ui-rounded, cursive;
-  --font-wordmark: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  /* Figma-style selection chrome around the name mark. */
+  --color-selection: #4f9cf9;
 
   /* ---- Palette (hexes lifted from the Figma frame) ---- */
   --color-ink: #141414;
@@ -24,6 +25,8 @@
 
   /* Project media-tile backgrounds */
   --color-media-violet: #e7e5ff;
+  /* Sampled from pcos-mockup.png so the panel blends into the artwork. */
+  --color-media-mockup: #dbd6fb;
   --color-media-mint: #e8f3f1;
   --color-media-sky: #f2f9fe;
   --color-media-rose: #ffeaee;
@@ -78,14 +81,6 @@ body {
   .page-x {
     padding-inline: 100px;
   }
-}
-
-/*
- * Fraunces ships SOFT + WONK axes. The design pins them to SOFT 0 / WONK 1,
- * which is what gives the headline its quirky `g` and `y` forms.
- */
-.wonk {
-  font-variation-settings: "SOFT" 0, "WONK" 1;
 }
 
 /* Big footer wordmark: gradient clipped to the glyphs. */
