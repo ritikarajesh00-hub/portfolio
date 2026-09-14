@@ -31,63 +31,6 @@ function Tile({
   );
 }
 
-/**
- * Portrait composition for the feature card's full-height panel.
- *
- * The landscape tile below cannot simply be stretched here — its offsets are
- * percentages of a 448×308 box, so a portrait panel would distort them. The
- * device instead takes its height from the panel and derives its width from
- * the source aspect ratio, then bleeds off the bottom edge.
- */
-function PcosFeatureMedia() {
-  // The supplied mockup already bakes in the device, its shadow and its own
-  // lavender backdrop, so no frame or rounding of ours goes on top.
-  //
-  // `contain` rather than `cover`: the artwork is square and the panel is not,
-  // so cover would slice the top and bottom off the phone. The panel is
-  // painted the colour sampled from the artwork, so the letterboxing on the
-  // sides is invisible.
-  return (
-    <Image
-      src={asset("/assets/pcos-mockup.png")}
-      alt="Kapiva PCOSolve doctor-led landing page shown on a phone"
-      fill
-      sizes="(max-width: 1024px) 100vw, 460px"
-      className="object-contain object-center"
-    />
-  );
-}
-
-function DiaFreeMedia({ bleed }: { bleed?: boolean }) {
-  if (bleed) return <PcosFeatureMedia />;
-
-  return (
-    <Tile tone="violet">
-      {/* Back handset — its bitmap is nudged left inside a clipping window. */}
-      <div className="absolute top-[11.45%] left-[49.47%] h-[103.55%] w-[33.6%] overflow-hidden">
-        <Image
-          src={asset("/assets/dia-mock-back.png")}
-          alt=""
-          width={1958}
-          height={3840}
-          sizes="160px"
-          className="absolute top-0 left-[-3.45%] h-full w-[108.96%] max-w-none"
-        />
-      </div>
-      <div className="absolute top-[6.51%] left-[16.96%] h-[109.42%] w-[38.97%] overflow-hidden">
-        <Image
-          src={asset("/assets/dia-mock-front.png")}
-          alt="Dia Free product detail page on mobile"
-          width={1958}
-          height={3840}
-          sizes="180px"
-          className="absolute top-0 left-[-0.03%] h-[101.41%] w-[100.06%] max-w-none"
-        />
-      </div>
-    </Tile>
-  );
-}
-
 function SubscriptionsMedia() {
   return (
     <Tile tone="mint">
@@ -158,14 +101,13 @@ function ReturnsMedia() {
   );
 }
 
-const media: Record<string, (props: { bleed?: boolean }) => React.JSX.Element> = {
-  "pcos-funnel": DiaFreeMedia,
+const media: Record<string, () => React.JSX.Element> = {
   "smart-subscriptions": SubscriptionsMedia,
   "trust-signals": TrustSignalsMedia,
   "returns-made-easy": ReturnsMedia,
 };
 
-export function ProjectMedia({ id, bleed }: { id: string; bleed?: boolean }) {
+export function ProjectMedia({ id }: { id: string }) {
   const Media = media[id];
-  return Media ? <Media bleed={bleed} /> : null;
+  return Media ? <Media /> : null;
 }

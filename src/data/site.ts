@@ -57,9 +57,15 @@ export type Project = {
   layout: "feature" | "wide" | "tall";
   tags: { label: string; tone: "violet" | "blue" | "rose" | "solid" | "outline" }[];
   title: string;
+  /** Substring of `title` painted brand blue on the feature card. */
+  titleAccent?: string;
   description: string;
-  /** Substring of `description` to italicise, echoing the pull-quote emphasis. */
-  emphasize?: string;
+  /** Kicker shown above the headline on the feature card (lowercase, muted). */
+  kicker?: string;
+  /** A handwritten-style note pinned near the feature card's artwork. */
+  annotation?: string;
+  /** Truthful context line under the feature card copy: figure + attribution. */
+  meta?: { figure: string; attribution: string };
   cta?: { label: string; href: string };
   media: { tone: "violet" | "mint" | "sky" | "rose" };
 };
@@ -73,8 +79,12 @@ export const projects: Project[] = [
       { label: "Healthcare GTM", tone: "outline" },
     ],
     title: "Designing a doctor-led landing page for a PCOS health program",
+    titleAccent: "doctor-led",
+    kicker: "kapiva · healthcare gtm · web",
     description:
       "A diagnosis-first landing page built from the ground up — consumer research, UX narrative, information architecture, and UI design, aligned across product, medical, and marketing stakeholders.",
+    annotation: "the messy one",
+    meta: { figure: "1 week to live", attribution: "Solo · research to UI · Kapiva 2024" },
     cta: { label: "Read the full case study", href: "/work/pcos-program" },
     media: { tone: "violet" },
   },
